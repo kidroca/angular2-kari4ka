@@ -5,7 +5,6 @@ import {FormsModule} from '@angular/forms';
 
 import {DataModule} from '../data/data.module';
 import {AppUserService} from '../data/app-user.service';
-import dataConfig from '../../secret/parse-config';
 
 @NgModule({
     imports: [
@@ -13,7 +12,6 @@ import dataConfig from '../../secret/parse-config';
         FormsModule,
         HttpModule,
         DataModule
-        // DataModule.forRoot(dataConfig)
     ],
     declarations: [],
     providers: [

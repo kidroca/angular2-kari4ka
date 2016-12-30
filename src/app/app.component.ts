@@ -14,8 +14,13 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.userService.logIn('admin', '123456')
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        this.userService.setUsername('admin');
+        this.userService.setPassword('123456');
+
+        this.userService.logIn()
+            .then(res => {
+                console.log(res);
+                console.log(this.userService.authenticated());
+            });
     }
 }
