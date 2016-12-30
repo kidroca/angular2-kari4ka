@@ -1,4 +1,29 @@
-# Karti4ka
+# Player4o
+
+Create memes and cards to share your wittyness with the world
+Or at least your friends
+
+## Features
+
+### View Memes
+- Public
+- Memes gallery
+
+### Create Meme content
+- Public
+- Pick image
+- Add text message
+
+### Share a Meme
+- Public
+- Get a link for sharing
+
+### Upload image
+- Private
+- Upload image that will be used with meme templates
+- Edit dimensions and crop
+
+---
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
