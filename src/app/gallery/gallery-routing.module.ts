@@ -17,6 +17,7 @@ const routeConfig: Routes = [
         children: [
             {
                 path: '',
+                canActivateChild: [AuthGuardService],
                 children: [
                     {path: 'images', component: ImagesComponent},
                     {path: 'add-image', component: AddImageComponent},
