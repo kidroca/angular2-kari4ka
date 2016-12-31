@@ -1,0 +1,32 @@
+<h2>Register</h2>
+<p>Currently registration is invite only</p>
+
+<hr>
+
+<form class="form-horizontal well col-lg-6 col-lg-offset-3"
+      (ngSubmit)="onSubmit(requestInvite)"
+      #requestInvite="ngForm">
+
+    <fieldset class="col-md-offset-2 col-md-8">
+
+        <legend>Request an invite</legend>
+
+        <div class="form-group">
+            <label class="control-label" for="email">Email</label>
+
+            <div class="input-group">
+                <input class="form-control"
+                       id="email"
+                       type="email"
+                       placeholder="telerik@academy.com"
+                       name="email"
+                       [(ngModel)]="email"
+                       required>
+
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Request</button>
+                </span>
+            </div>
+        </div>
+    </fieldset>
+</form>
