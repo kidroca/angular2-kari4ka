@@ -6,7 +6,6 @@ import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import { PageNotFoundComponent } from './app-routing/page-not-found/page-not-found.component';
 import { TitleComponent } from './title/title.component';
-import {GalleryModule} from './gallery/gallery.module';
 import { HomeComponent } from './home/home.component';
 import {AuthenticationModule} from './authentication/authentication.module';
 
@@ -15,7 +14,6 @@ import {AuthenticationModule} from './authentication/authentication.module';
         BrowserModule,
         CoreModule,
         AuthenticationModule,
-        GalleryModule,
         AppRoutingModule,
     ],
     declarations: [

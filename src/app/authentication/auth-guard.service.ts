@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {
     CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router,
-    CanActivateChild
+    CanActivateChild, CanLoad, Route
 } from '@angular/router';
 import {AppUserService} from '../core/data/app-user.service';
 
 @Injectable()
-export class AuthGuardService implements CanActivate, CanActivateChild {
+export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad {
 
     public redirectUrl: string;
 
@@ -15,19 +15,29 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-        if (this.userService.authenticated()) {
-            return true;
-        }
-
-        this.redirectUrl = state.url;
-
-        this.router.navigate(['./login']);
-
-        return false;
+        return this.allowTransition(state.url);
     }
 
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
         return this.canActivate(childRoute, state);
+    }
+
+    canLoad(route: Route): boolean {
+
+        return this.allowTransition(`/${route.path}`);
+    }
+
+    private allowTransition(url: string): boolean {
+
+        if (this.userService.authenticated()) {
+            return true;
+        }
+
+        this.redirectUrl = url;
+
+        this.router.navigate(['./login']);
+
+        return false;
     }
 }

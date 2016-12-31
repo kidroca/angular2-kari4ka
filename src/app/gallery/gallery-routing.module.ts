@@ -10,20 +10,15 @@ import {AuthGuardService} from '../authentication/auth-guard.service';
 
 const routeConfig: Routes = [
     {
-        path: 'gallery',
+        path: '',
         component: GalleryComponent,
         canActivate: [AuthGuardService],
         data: {title: 'Gallery'},
+        canActivateChild: [AuthGuardService],
         children: [
-            {
-                path: '',
-                canActivateChild: [AuthGuardService],
-                children: [
-                    {path: 'images', component: ImagesComponent},
-                    {path: 'add-image', component: AddImageComponent},
-                    {path: '', redirectTo: './images', pathMatch: 'full'}
-                ]
-            }
+            {path: 'images', component: ImagesComponent},
+            {path: 'add-image', component: AddImageComponent},
+            {path: '', redirectTo: 'images', pathMatch: 'full'}
         ]
     }
 ];
