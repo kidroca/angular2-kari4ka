@@ -5,10 +5,10 @@ import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import { PageNotFoundComponent } from './app-routing/page-not-found/page-not-found.component';
-import { TitleComponent } from './title/title.component';
-import { HomeComponent } from './home/home.component';
+import { TitleComponent } from './layout/title/title.component';
+import { HomeComponent } from './layout/home/home.component';
 import {AuthenticationModule} from './authentication/authentication.module';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
     imports: [
