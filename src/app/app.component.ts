@@ -8,10 +8,7 @@ import {AppUserService} from './core/data/app-user.service';
 })
 export class AppComponent implements OnInit {
 
-    title = 'app works!';
-
     constructor(private userService: AppUserService) {}
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 }

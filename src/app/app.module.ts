@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './app-routing/page-not-found/page-not-fou
 import { TitleComponent } from './title/title.component';
 import { HomeComponent } from './home/home.component';
 import {AuthenticationModule} from './authentication/authentication.module';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {AuthenticationModule} from './authentication/authentication.module';
         AppComponent,
         PageNotFoundComponent,
         TitleComponent,
-        HomeComponent
+        HomeComponent,
+        HeaderComponent
     ],
 
     bootstrap: [AppComponent]

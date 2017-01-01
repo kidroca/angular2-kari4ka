@@ -1,12 +1,11 @@
-<h1>{{title}}</h1>
-
-<nav>
-    <a routerLink="/home" routerLinkActive="active">Home</a>
-    <a routerLink="/gallery" routerLinkActive="active">Image gallery</a>
-</nav>
+<app-header></app-header>
 
 <main class="container">
     <router-outlet></router-outlet>
 </main>
 
 <router-outlet name="popup"></router-outlet>
+
+<footer>
+    Karti4ka {{version}} 2016
+</footer>
