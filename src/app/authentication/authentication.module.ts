@@ -14,6 +14,10 @@ import {AuthenticationComponent} from './authentication.component';
   providers: [
       AuthGuardService
   ],
-  declarations: [LoginComponent, RegisterComponent, AuthenticationComponent]
+  declarations: [
+      LoginComponent,
+      RegisterComponent,
+      AuthenticationComponent
+  ]
 })
 export class AuthenticationModule { }

@@ -9,6 +9,7 @@ import {NgForm} from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
     email: string;
+    triedToSubmit: boolean = false;
 
     constructor() {
     }
@@ -16,6 +17,8 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {}
 
     onSubmit(requestInvite: NgForm) {
+
+        this.triedToSubmit = true;
 
         if (requestInvite.invalid) {
             return;

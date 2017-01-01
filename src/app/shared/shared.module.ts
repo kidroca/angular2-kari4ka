@@ -4,6 +4,8 @@
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import { FormInputComponent } from './form-input/form-input.component';
+import {ErrorDefinitionService} from './form-input/error-definition.service';
 
 @NgModule({
     imports: [
@@ -12,10 +14,11 @@ import {CommonModule} from '@angular/common';
     ],
     exports: [
         FormsModule,
-        CommonModule
+        CommonModule,
+        FormInputComponent
     ],
-    declarations: [],
-    providers: [],
+    declarations: [FormInputComponent],
+    providers: [ErrorDefinitionService],
 })
 export class SharedModule { }
 
