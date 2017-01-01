@@ -1,0 +1,44 @@
+.panel {
+    border-color: #e3e8ed;
+    border-radius: 2px;
+
+    .panel-heading, .panel-footer {
+        border-color: transparent;
+        background: #f7f8f9;
+    }
+
+    .panel-heading, .panel-heading h2 {
+
+        font-size: 13px;
+        line-height: 17px;
+        font-weight: 600;
+        text-transform: uppercase;
+        opacity: 0.5;
+        color: #000;
+    }
+
+    .panel-heading {
+
+        &:before, &:after {
+            display: table;
+            content: " ";
+        }
+
+        &:after {
+            clear: both;
+        }
+
+        h2 {
+            float: left;
+            margin: 0;
+            opacity: 1;
+        }
+
+        &.text-center {
+
+            h2 {
+                float: none;
+            }
+        }
+    }
+}
