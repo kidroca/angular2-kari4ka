@@ -4,6 +4,7 @@ import {GalleryRoutingModule} from './gallery-routing.module';
 import {ImagesComponent} from './images/images.component';
 import {AddImageComponent} from './add-image/add-image.component';
 import {GalleryComponent} from './gallery.component';
+import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import {GalleryComponent} from './gallery.component';
     declarations: [
         GalleryComponent,
         ImagesComponent,
-        AddImageComponent
+        AddImageComponent,
+        ThumbnailComponent
     ]
 })
 export class GalleryModule {}
