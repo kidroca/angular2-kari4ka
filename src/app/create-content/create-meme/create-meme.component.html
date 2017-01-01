@@ -1,0 +1,55 @@
+<h2 class="page-header">Create Meme</h2>
+
+<section class="select-template animated fadeInDown panel">
+
+    <header class="panel-heading">
+        <h2>Select a template</h2>
+    </header>
+
+    <section class="panel-body">
+        <!--Todo: template image component-->
+    </section>
+
+</section>
+
+<section class="preview animated fadeInDown panel">
+
+    <header class="panel-heading">
+        <h2>Edit & Preview</h2>
+    </header>
+
+    <div class="media">
+        <img class="img-responsive" [src]="previewSource" alt="Selected Image"/>
+    </div>
+</section>
+
+<!--Toolbox component-->
+<section class="controls col-md-offset-1 col-md-6 well well-lg">
+
+    <form class="form-horizontal"
+          #memeForm="ngForm"
+          novalidate (ngSubmit)="onSubmit(memeForm)">
+
+        <fieldset>
+
+            <app-form-input labelText="Title"
+                            [displayMessages]="triedToSubmit"
+                            [ngModelController]="title">
+
+                <input type="text"
+                       class="form-control"
+                       name="title"
+                       #title="ngModel"
+                       placeholder="Your creative title of at least 4 letters"
+                       required
+                       minlength="4"
+                       [(ngModel)]="meme.title"/>
+            </app-form-input>
+
+        </fieldset>
+    </form>
+</section>
+
+<div class="actions btn-group">
+    <button class="btn btn-success pull-right" type="submit">Save</button>
+</div>

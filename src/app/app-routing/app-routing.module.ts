@@ -16,6 +16,10 @@ const routeConfig: Routes = [{
     canLoad: [AuthGuardService]
 }, {
 
+    path: 'create-content',
+    loadChildren: 'app/create-content/create-content.module#CreateContentModule'
+}, {
+
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
