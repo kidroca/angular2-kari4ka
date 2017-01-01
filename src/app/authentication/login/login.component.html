@@ -11,25 +11,30 @@
         <legend>Login</legend>
 
         <!-- Username-->
-        <div class="form-group">
-            <label class="control-label" for="username">Username</label>
+        <app-form-input labelText="Username"
+                        [displayMessages]="triedToSubmit"
+                        [ngModelController]="usernemaeControl">
 
-            <input class="form-control"
-                   id="username" type="text"
-                   placeholder="Your super-cool nickname" minlength="3"
+            <input type="text" class="form-control"
+                   #usernemaeControl="ngModel"
+                   placeholder="Your super-cool nickname"
+                   name="username"
                    [(ngModel)]="username"
-                   maxlength="20" name="username" required>
-        </div>
+                   minlength="3" maxlength="20" required>
+
+        </app-form-input>
 
         <!-- Password-->
-        <div class="form-group">
-            <label class="control-label" for="password">Password</label>
+        <app-form-input labelText="Password" [displayMessages]="triedToSubmit" [ngModelController]="passwordControl">
 
-            <input class="form-control" id="password" type="password"
-                   placeholder="ConsoleApplication1" name="password"
+            <input type="password" class="form-control"
+                   #passwordControl
+                   placeholder="ConsoleApplication1"
+                   name="password"
                    [(ngModel)]="password"
                    minlength="4" maxlength="64" required>
-        </div>
+
+        </app-form-input>
 
         <div class="form-group control-label">
             <button class="btn btn-primary pull-right" type="submit">Login</button>
