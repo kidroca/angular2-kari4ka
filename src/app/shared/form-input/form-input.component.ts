@@ -9,7 +9,7 @@ import {ErrorDefinitionService} from './error-definition.service';
 })
 export class FormInputComponent {
 
-    @Input() labelText: string;
+    @Input() labelText: string = 'set the `labelText` attribute';
     @Input() ngModelController: NgModel;
     @Input() displayMessages: boolean = false;
 

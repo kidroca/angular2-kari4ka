@@ -1,7 +1,8 @@
 <div class="form-group"
-     [class]="getGroupClass()">
+     [ngClass]="getGroupClass()">
+
     <label class="control-label"
-           [class]="getGroupClass('text-')">{{labelText}}
+           [ngClass]="getGroupClass('text-')">{{labelText}}
 
         <ng-content id="input"></ng-content>
     </label>
