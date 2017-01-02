@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 
 import {AppUserService} from './data/app-user.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AppImageService} from './data/app-image.service';
 
 @NgModule({
     imports: [
@@ -15,7 +16,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ],
     declarations: [],
     providers: [
-        AppUserService
+        AppUserService, AppImageService
     ],
     exports: [
         CommonModule,

@@ -1,19 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {AppImage} from '../models/app-image';
+import {AppImage} from '../../core/data/models/app-image';
+import {AppImageService} from '../../core/data/app-image.service';
 
 @Component({
     selector: 'app-add-image',
     templateUrl: './add-image.component.html',
-    styleUrls: ['./add-image.component.less'],
-    providers: [AppImage]
+    styleUrls: ['./add-image.component.less']
 })
 export class AddImageComponent implements OnInit {
 
     supportedFileExtensions: string[] = ['jpeg', 'jpg', 'png'];
-
     isLoading: boolean = false;
+    appImage: AppImage;
 
-    constructor(public appImage: AppImage) {}
+    constructor(private imageService: AppImageService) {
+        this.appImage = this.imageService.newImage();
+    }
 
     public onFileDrop(files: File[]): void {
 
@@ -21,6 +23,7 @@ export class AddImageComponent implements OnInit {
         if (file) {
             this.appImage.setFile(files[0]);
             this.appImage.title = files[0].name;
+            this.imageService.setDataUrl(this.appImage, file);
         }
         else {
             this.appImage.resetFile();

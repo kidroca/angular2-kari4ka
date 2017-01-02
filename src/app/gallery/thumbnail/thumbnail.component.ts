@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {AppImage} from '../models/app-image';
+import {AppImage} from '../../core/data/models/app-image';
 
 @Component({
     selector: 'app-thumbnail',

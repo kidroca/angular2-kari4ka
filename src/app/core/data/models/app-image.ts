@@ -2,25 +2,19 @@
  * Created by kidroca on 1.1.2017 г..
  */
 import { Injectable } from '@angular/core';
-import { File as ParseFile, Object as ParseObject, User } from 'parse';
-import {AppUserService} from '../../core/data/app-user.service';
-import {AppUser} from '../../core/data/models/user';
-
-const DefaultCategory = 'general';
+import { File as ParseFile, Object as ParseObject } from 'parse';
+import {AppUser} from './user';
 
 @Injectable()
 export class AppImage extends ParseObject {
 
-    private asDataUrl: string;
-    private fileReader: FileReader;
+    public dataUrl: string;
 
-    constructor(private userService: AppUserService) {
+    constructor() {
         super('AppImage');
-        this.category = DefaultCategory;
-        this.set('createdBy', this.userService.currentUser);
     }
 
-    private get file(): ParseFile | File {
+    private get file(): ParseFile {
         return this.get('file');
     }
 
@@ -29,12 +23,8 @@ export class AppImage extends ParseObject {
     }
 
     get url(): string {
-        let file = this.file as ParseFile;
+        let file = this.file;
         return file && file.url();
-    }
-
-    get dataUrl(): string {
-        return this.asDataUrl;
     }
 
     get title(): string {
@@ -58,8 +48,6 @@ export class AppImage extends ParseObject {
             throw new Error('setFile() called without file');
         }
 
-        this.readDataUrl(file);
-
         let parseFile = new ParseFile(file.name, file);
 
         this.set('file', parseFile);
@@ -67,13 +55,7 @@ export class AppImage extends ParseObject {
 
     resetFile() {
         this.set('file', undefined);
-        this.asDataUrl = '';
-
-        if (this.fileReader) {
-            this.fileReader.abort();
-            this.fileReader.removeEventListener('load');
-            this.fileReader = null;
-        }
+        this.dataUrl = '';
     }
 
     /**
@@ -110,21 +92,5 @@ export class AppImage extends ParseObject {
         else if (!this.title || this.title.length < 3) {
             throw new Error('Invalid title');
         }
-    }
-
-    private readDataUrl(file: File) {
-
-        if (!this.fileReader) {
-            this.fileReader = new FileReader();
-        }
-
-        this.fileReader.addEventListener(
-            'load', () => {
-                this.asDataUrl = this.fileReader.result;
-                this.fileReader.removeEventListener('load');
-                this.fileReader = null;
-            }, false);
-
-        this.fileReader.readAsDataURL(file);
     }
 }
