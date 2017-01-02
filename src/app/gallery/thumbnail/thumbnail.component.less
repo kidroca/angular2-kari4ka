@@ -1,0 +1,41 @@
+@minHeight: 340px;
+
+.media {
+    position: relative;
+    min-height: @minHeight;
+
+    img {
+        margin: auto;
+        min-height: @minHeight;
+    }
+
+    .no-image {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        padding: 30px 0;
+
+        h2 {
+            margin-top: 0;
+        }
+    }
+
+    .caption{
+        position:absolute;
+        height:70px;
+        width:100%;
+        bottom: 0;
+        left:0;
+        opacity:0.95;
+        background-color:black;
+        color:white;
+        font-family: verdana, monospace;
+        text-align: center;
+    }
+}
+
+.icon-xlarge {
+    font-size: 6em;
+}

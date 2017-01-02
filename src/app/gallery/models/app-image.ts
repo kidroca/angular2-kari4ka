@@ -9,6 +9,9 @@ const DefaultCategory = 'general';
 @Injectable()
 export class AppImage extends ParseObject {
 
+    private asDataUrl: string;
+    private fileReader: FileReader;
+
     // How to display as data when the image is selected from local source1
     constructor() {
         super('AppImage');
@@ -22,6 +25,10 @@ export class AppImage extends ParseObject {
     get url(): string {
         let file = this.file as ParseFile;
         return file && file.url();
+    }
+
+    get dataUrl(): string {
+        return this.asDataUrl;
     }
 
     get title(): string {
@@ -41,13 +48,26 @@ export class AppImage extends ParseObject {
     }
 
     setFile(file: File) {
-        if (!file) {
+        if (!file || file instanceof File === false) {
             throw new Error('setFile() called without file');
         }
+
+        this.readDataUrl(file);
 
         let parseFile = new ParseFile(file.name, file);
 
         this.set('file', parseFile);
+    }
+
+    resetFile() {
+        this.set('file', undefined);
+        this.asDataUrl = '';
+
+        if (this.fileReader) {
+            this.fileReader.abort();
+            this.fileReader.removeEventListener('load');
+            this.fileReader = null;
+        }
     }
 
     /**
@@ -84,5 +104,21 @@ export class AppImage extends ParseObject {
         else if (!this.title || this.title.length < 3) {
             throw new Error('Invalid title');
         }
+    }
+
+    private readDataUrl(file: File) {
+
+        if (!this.fileReader) {
+            this.fileReader = new FileReader();
+        }
+
+        this.fileReader.addEventListener(
+            'load', () => {
+                this.asDataUrl = this.fileReader.result;
+                this.fileReader.removeEventListener('load');
+                this.fileReader = null;
+            }, false);
+
+        this.fileReader.readAsDataURL(file);
     }
 }
