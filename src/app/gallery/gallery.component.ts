@@ -4,6 +4,6 @@
 import {Component} from '@angular/core';
 
 @Component({
-    templateUrl: './gallery.component.html'
+    template: '<router-outlet></router-outlet>'
 })
 export class GalleryComponent {}
