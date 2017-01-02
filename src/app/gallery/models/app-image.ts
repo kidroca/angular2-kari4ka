@@ -2,7 +2,9 @@
  * Created by kidroca on 1.1.2017 г..
  */
 import { Injectable } from '@angular/core';
-import { File as ParseFile, Object as ParseObject } from 'parse';
+import { File as ParseFile, Object as ParseObject, User } from 'parse';
+import {AppUserService} from '../../core/data/app-user.service';
+import {AppUser} from '../../core/data/models/user';
 
 const DefaultCategory = 'general';
 
@@ -12,14 +14,18 @@ export class AppImage extends ParseObject {
     private asDataUrl: string;
     private fileReader: FileReader;
 
-    // How to display as data when the image is selected from local source1
-    constructor() {
+    constructor(private userService: AppUserService) {
         super('AppImage');
         this.category = DefaultCategory;
+        this.set('createdBy', this.userService.currentUser);
     }
 
     private get file(): ParseFile | File {
         return this.get('file');
+    }
+
+    get createdBy(): AppUser {
+        return this.get('createdBy');
     }
 
     get url(): string {
