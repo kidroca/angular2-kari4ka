@@ -2,16 +2,26 @@
  * Created by kidroca on 1.1.2017 г..
  */
 import { Injectable } from '@angular/core';
-import { File, Object as ParseObject } from 'parse';
+import { File as ParseFile, Object as ParseObject } from 'parse';
 
 const DefaultCategory = 'general';
 
 @Injectable()
 export class AppImage extends ParseObject {
 
+    // How to display as data when the image is selected from local source1
     constructor() {
         super('AppImage');
         this.category = DefaultCategory;
+    }
+
+    private get file(): ParseFile | File {
+        return this.get('file');
+    }
+
+    get url(): string {
+        let file = this.file as ParseFile;
+        return file && file.url();
     }
 
     get title(): string {
@@ -30,12 +40,14 @@ export class AppImage extends ParseObject {
         this.set('category', value.toLowerCase());
     }
 
-    get file(): File {
-        return this.get('file');
-    }
+    setFile(file: File) {
+        if (!file) {
+            throw new Error('setFile() called without file');
+        }
 
-    set file(value: File) {
-        this.set('file', value);
+        let parseFile = new ParseFile(file.name, file);
+
+        this.set('file', parseFile);
     }
 
     /**
