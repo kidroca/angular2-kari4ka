@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AppImage} from '../models/app-image';
-import {Submittable} from '../../shared/abstractions/submittable';
-
 
 @Component({
     selector: 'app-add-image',
@@ -38,12 +36,11 @@ export class AddImageComponent implements OnInit {
         this.isLoading = true;
 
         return this.appImage.push().then(x => {
-            console.log(x);
+            // Todo: redirect
             this.isLoading = false;
             return x;
         }, err => {
             console.log(err);
-            this.isLoading = false;
         });
     }
 

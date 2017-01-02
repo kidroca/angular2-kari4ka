@@ -31,7 +31,8 @@
                 <button *ngIf="isFileSelected()"
                         [disabled]="isLoading"
                         class="btn btn-upload btn-primary"
-                        (click)="upload()">Upload</button>
+                        ngbTooltip="Upload image"
+                        (click)="upload()"><i class="fa fa-upload"></i></button>
             </div>
         </div>
 
