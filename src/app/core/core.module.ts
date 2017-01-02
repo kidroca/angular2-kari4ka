@@ -3,16 +3,15 @@ import {CommonModule} from '@angular/common';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 
-import {DataModule} from './data/data.module';
 import {AppUserService} from './data/app-user.service';
-import {AuthGuardService} from '../authentication/auth-guard.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         HttpModule,
-        DataModule
+        NgbModule.forRoot()
     ],
     declarations: [],
     providers: [
@@ -21,7 +20,8 @@ import {AuthGuardService} from '../authentication/auth-guard.service';
     exports: [
         CommonModule,
         FormsModule,
-        HttpModule
+        HttpModule,
+        NgbModule
     ]
 })
 export class CoreModule {}

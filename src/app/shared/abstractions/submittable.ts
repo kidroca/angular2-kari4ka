@@ -28,7 +28,7 @@ export abstract class Submittable {
 
         this.isLoading = true;
 
-        return this.onValidForm(form)
+        this.onValidForm(form)
             .then(() => this.submitFinally())
             .catch(err => this.submitFinally() || Promise.reject(err));
     }
