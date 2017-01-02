@@ -1,6 +1,6 @@
 import {
     Directive, HostListener, ElementRef, Output, EventEmitter, Optional,
-    OnInit
+    OnInit, Input
 } from '@angular/core';
 import {Subject} from 'rxjs';
 
@@ -18,10 +18,13 @@ export class FileDropDirective implements OnInit {
     private dragClass: string;
     private dragListener: Subject<boolean> = new Subject();
 
+    @Input() fileExtensions: string[] = [];
+
     @Output() onFile: EventEmitter<File[]> = new EventEmitter();
 
     constructor(private el: ElementRef, @Optional() DRAG_CLASS?: string) {
         this.dragClass = DRAG_CLASS || DefaultDragClass;
+        this.el.nativeElement.setAttribute('dropzone', 'copy');
     }
 
     ngOnInit(): void {
@@ -40,8 +43,9 @@ export class FileDropDirective implements OnInit {
             });
     }
 
-    @HostListener('dragover', ['$event']) onDragEnter(event: Event) {
+    @HostListener('dragover', ['$event']) onDragEnter(event: DragEvent) {
         this.dragListener.next(true);
+        event.dataTransfer.dropEffect = 'copy';
         event.preventDefault();
     }
 
@@ -51,6 +55,9 @@ export class FileDropDirective implements OnInit {
 
     @HostListener('drop', ['$event']) onDrop(event: DragEvent) {
 
+        event.preventDefault();
+        this.dragListener.next(false);
+
         let files = event.dataTransfer.files;
 
         if (files.length === 0) {
@@ -59,15 +66,23 @@ export class FileDropDirective implements OnInit {
 
         let filesArray: File[] = [];
 
-        for (let i in files) {
-            if (Reflect.has(files, i)) {
+        for (let i = 0; i < files.length; i++) {
+            if (this.isValidFile(files[i])) {
                 filesArray.push(files[i]);
             }
         }
 
-        this.onFile.emit(filesArray);
+        if (filesArray.length > 0) {
+            this.onFile.emit(filesArray);
+        }
+    }
 
-        event.preventDefault();
-        this.dragListener.next(false);
+    private isValidFile(file: File): boolean {
+
+        if (this.fileExtensions.length === 0) {
+            return true;
+        }
+
+        return this.fileExtensions.some(ext => file.name.endsWith(ext));
     }
 }
