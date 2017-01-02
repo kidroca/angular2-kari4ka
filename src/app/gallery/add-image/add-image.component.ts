@@ -1,19 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {AppImage} from '../../core/data/models/app-image';
 import {AppImageService} from '../../core/data/app-image.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-add-image',
     templateUrl: './add-image.component.html',
     styleUrls: ['./add-image.component.less']
 })
-export class AddImageComponent implements OnInit {
+export class AddImageComponent {
 
     supportedFileExtensions: string[] = ['jpeg', 'jpg', 'png'];
     isLoading: boolean = false;
     appImage: AppImage;
 
-    constructor(private imageService: AppImageService) {
+    constructor(private router: Router, private imageService: AppImageService) {
         this.appImage = this.imageService.newImage();
     }
 
@@ -30,18 +31,17 @@ export class AddImageComponent implements OnInit {
         }
     }
 
-    public upload(): Promise<AppImage> {
+    public upload() {
 
         if (!this.isFileSelected()) {
-            return Promise.reject<AppImage>(new Error('No file selected'));
+            return;
         }
 
         this.isLoading = true;
 
         return this.appImage.push().then(x => {
-            // Todo: redirect
             this.isLoading = false;
-            return x;
+            this.router.navigate(['/gallery']);
         }, err => {
             console.log(err);
         });
@@ -56,6 +56,4 @@ export class AddImageComponent implements OnInit {
     public isFileSelected(): boolean {
         return !!(this.appImage.url || this.appImage.dataUrl);
     }
-
-    ngOnInit() {}
 }

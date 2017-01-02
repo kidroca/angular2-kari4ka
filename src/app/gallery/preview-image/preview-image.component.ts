@@ -2,11 +2,11 @@ import {Component, Input} from '@angular/core';
 import {AppImage} from '../../core/data/models/app-image';
 
 @Component({
-    selector: 'app-thumbnail',
-    templateUrl: './thumbnail.component.html',
-    styleUrls: ['./thumbnail.component.less']
+    selector: 'app-preview-image',
+    templateUrl: './preview-image.component.html',
+    styleUrls: ['./preview-image.component.less']
 })
-export class ThumbnailComponent {
+export class PreviewComponent {
 
     @Input() image: AppImage;
 
