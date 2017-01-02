@@ -1,6 +1,6 @@
 <section class="row">
 
-    <section class="preview col-md-offset-1 col-md-10 animated fadeInRight">
+    <section class="preview col-md-offset-1 col-md-10 animated fadeInUp">
 
         <h1>Add Image</h1>
 
@@ -10,11 +10,15 @@
 
             <header class="panel-heading">
                 <h2>Preview</h2>
-                <input type="file"
-                       class="pull-right"
-                       #fileControl
-                       (change)="onFileDrop(fileControl.files)" />
 
+                <label
+                    class="file-input btn btn-default pull-right"
+                    tabindex="1">Choose file
+                    <input type="file"
+                           id="file-input"
+                           #fileControl
+                           (change)="onFileDrop(fileControl.files)" />
+                </label>
             </header>
 
             <app-preview-image [image]="appImage">

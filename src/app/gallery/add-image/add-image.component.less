@@ -1,3 +1,5 @@
+@import "../../../assets/styles/variables";
+
 [draggable] {
     user-select: none;
 }
@@ -6,14 +8,25 @@
     border: 2px dashed #fff;
 }
 
-input[type="file"] {
-    width: 85.5px;
-
-    transition: outline 0.2s;
+.file-input {
+    transition: all 0.25s;
+    text-transform: none;
+    padding: 5px 0;
+    margin: 4px 0;
+    width: 90px;
+    line-height: 17px;
+    color: white;
 
     &:hover {
-        color: white;
-        outline: solid #39ff9e;
+        color: darken(white, 20%);
+        border-color: darken(white, 20%);
+    }
+
+    input[type="file"] {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        display: none;
     }
 }
 
