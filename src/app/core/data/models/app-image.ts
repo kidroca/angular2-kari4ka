@@ -8,6 +8,10 @@ import {AppUser} from './user';
 @Injectable()
 export class AppImage extends ParseObject {
 
+    public static readonly createdBy: string = 'createdBy';
+    public static readonly title: string = 'title';
+    public static readonly category: string = 'category';
+
     public dataUrl: string;
 
     constructor() {
@@ -94,3 +98,5 @@ export class AppImage extends ParseObject {
         }
     }
 }
+
+ParseObject.registerSubclass('AppImage', AppImage);
