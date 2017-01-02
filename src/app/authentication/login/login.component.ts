@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {AuthGuardService} from '../auth-guard.service';
 import {Submittable} from '../../shared/abstractions/submittable';
+import {AppUser} from '../../core/data/models/user';
 
 @Component({
     selector: 'app-login',
@@ -13,6 +14,7 @@ import {Submittable} from '../../shared/abstractions/submittable';
 export class LoginComponent extends Submittable implements OnInit {
 
     private redirectUrl: string;
+    private user: AppUser;
 
     username: string;
     password: string;
@@ -24,6 +26,7 @@ export class LoginComponent extends Submittable implements OnInit {
 
         super();
 
+        this.user = this.userService.newUser();
         this.redirectUrl = this.authGuard.redirectUrl || '/home';
     }
 
@@ -31,10 +34,10 @@ export class LoginComponent extends Submittable implements OnInit {
 
     onValidForm(loginForm?: NgForm): Promise<boolean> {
 
-        this.userService.setUsername(this.username);
-        this.userService.setPassword(this.password);
+        this.user.setUsername(this.username);
+        this.user.setPassword(this.password);
 
-        return Promise.resolve<boolean>(this.userService.logIn())
+        return Promise.resolve<boolean>(this.user.logIn())
             .then(res => {
                 console.log(res);
                 return this.router.navigate([this.redirectUrl]);

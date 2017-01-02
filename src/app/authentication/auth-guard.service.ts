@@ -30,7 +30,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
 
     private allowTransition(url: string): boolean {
 
-        if (this.userService.authenticated()) {
+        if (this.userService.isAuthenticated) {
             return true;
         }
 
