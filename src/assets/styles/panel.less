@@ -1,16 +1,17 @@
 @import "variables";
 
-.panel {
+.panel, .card {
     border-color: #e3e8ed;
     border-radius: 2px;
+    background-color: #222;
 
-    .panel-heading, .panel-footer {
+    .panel-heading, .panel-footer, .card-header {
         padding: 0 15px;
         border-color: transparent;
         background: rgba(247, 248, 249, 0.5);
     }
 
-    .panel-heading, .panel-heading h2 {
+    .panel-heading, .card-header, .panel-heading h2, .card-header h2 {
 
         font-size: 13px;
         line-height: 17px;
@@ -19,7 +20,7 @@
         color: @grayish;
     }
 
-    .panel-heading {
+    .panel-heading, .card-header {
 
         &:before, &:after {
             display: table;
@@ -43,4 +44,8 @@
             }
         }
     }
+}
+
+.card .card-header {
+    padding: 0;
 }

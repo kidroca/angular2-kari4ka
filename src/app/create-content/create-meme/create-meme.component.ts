@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Meme} from '../models/meme';
 import {NgForm} from '@angular/forms';
 import {Submittable} from '../../shared/abstractions/submittable';
+import {AppImageService} from '../../core/data/app-image.service';
+import {AppImage} from '../../core/data/models/app-image';
+import {NgbAccordion} from '@ng-bootstrap/ng-bootstrap/accordion/accordion';
 
 @Component({
     selector: 'app-create-meme',
@@ -11,21 +14,22 @@ import {Submittable} from '../../shared/abstractions/submittable';
 })
 export class CreateMemeComponent extends Submittable implements OnInit {
 
-    static defaultImage: string = 'http://2.bp.blogspot.com/-ZCaoDTKmhgs/UcRUJoaY7UI/AAAAAAAABDw/ta3S76aakWA/s1600/Face-palm+Meme.jpg';
+    private images: AppImage[] = [];
+    @ViewChild(NgbAccordion) accordion: NgbAccordion;
 
-    selectedImage: string;
+    selectedImage: AppImage;
 
-    constructor(public meme: Meme) {
+    constructor(public meme: Meme, private imageService: AppImageService) {
         super();
     }
 
     get previewSource(): string {
 
         if (this.selectedImage) {
-            return this.selectedImage;
+            return this.selectedImage.url;
         }
 
-        return CreateMemeComponent.defaultImage;
+        return '';
     }
 
     onValidForm(memeForm?: NgForm): Promise<boolean> {
@@ -35,5 +39,24 @@ export class CreateMemeComponent extends Submittable implements OnInit {
     }
 
     ngOnInit() {
+        this.getImagePage(1);
+        this.accordion.closeOtherPanels = true;
+    }
+
+    getImagePage(page: number) {
+
+        this.imageService
+            .getImages('general', page)
+            .then(images => {
+                this.images = this.images.concat(images);
+                this.accordion.toggle('images');
+            });
+    }
+
+    onImageSelect(image: AppImage) {
+
+        this.selectedImage = image;
+        this.accordion.toggle('edit');
+        this.meme.image = image;
     }
 }

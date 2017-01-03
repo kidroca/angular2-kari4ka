@@ -20,6 +20,9 @@ import { ThumbnailComponent } from './thumbnail/thumbnail.component';
         PreviewComponent,
         FileDropDirective,
         ThumbnailComponent
+    ],
+    exports: [
+        ThumbnailComponent
     ]
 })
 export class GalleryModule {}

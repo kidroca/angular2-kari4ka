@@ -23,7 +23,7 @@ export class ImagesComponent implements OnInit {
         this.imageService
             .getImages(this.selectedCategory, page)
             .then(images => {
-                this.images = this.images.concat(images).concat(images).concat(images).concat(images);
+                this.images = this.images.concat(images);
             });
     }
 }
