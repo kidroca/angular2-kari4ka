@@ -1,0 +1,44 @@
+<section class="row">
+
+    <section class="preview col-md-offset-1 col-md-10 animated fadeInUp">
+
+        <h1>Add Image</h1>
+
+        <div class="panel" appFileDrop
+             [fileExtensions]="supportedFileExtensions"
+             (onFile)="onFileDrop($event)">
+
+            <header class="panel-heading">
+                <h2>Preview</h2>
+
+                <label
+                    class="file-input btn btn-default pull-right"
+                    tabindex="1">Choose file
+                    <input type="file"
+                           id="file-input"
+                           #fileControl
+                           (change)="onFileDrop(fileControl.files)" />
+                </label>
+            </header>
+
+            <app-preview-image [image]="appImage">
+                <p class="no-image">You can drag an image here or use the select button</p>
+            </app-preview-image>
+
+            <div class="caption" *ngIf="isFileSelected()">
+
+                <h3><input type="text"
+                           [(ngModel)]="appImage.title"
+                           (keyup.space)="trimSpaces()"
+                           (keyup.enter)="upload()"></h3>
+
+                <button *ngIf="isFileSelected()"
+                        [disabled]="isLoading"
+                        class="btn btn-upload btn-primary"
+                        ngbTooltip="Upload image"
+                        (click)="upload()"><i class="fa fa-upload"></i></button>
+            </div>
+        </div>
+
+    </section>
+</section>

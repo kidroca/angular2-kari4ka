@@ -1,0 +1,151 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?244z7m');
+	src:url('../fonts/icomoon.eot?#iefix244z7m') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?244z7m') format('truetype'),
+		url('../fonts/icomoon.woff?244z7m') format('woff'),
+		url('../fonts/icomoon.svg?244z7m#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icomoon-"], [class*=" icomoon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icomoon-subscriptions:before {
+	content: "\e61d";
+}
+.icomoon-packages:before {
+	content: "\e61e";
+}
+.icomoon-cards:before {
+	content: "\e61f";
+}
+.icomoon-plus_alt:before {
+	content: "\e61b";
+}
+.icomoon-plus:before {
+	content: "\e61c";
+}
+.icomoon-classes:before {
+	content: "\e616";
+}
+.icomoon-gear2:before {
+	content: "\e617";
+}
+.icomoon-picture:before {
+	content: "\e618";
+}
+.icomoon-services:before {
+	content: "\e619";
+}
+.icomoon-calendar_empty:before {
+	content: "\e61a";
+}
+.icomoon-marketing:before {
+	content: "\e614";
+}
+.icomoon-coupons:before {
+	content: "\e615";
+}
+.icomoon-browse:before {
+	content: "\e612";
+}
+.icomoon-sign:before {
+	content: "\e613";
+}
+.icomoon-website:before {
+	content: "\e600";
+}
+.icomoon-users:before {
+	content: "\e601";
+}
+.icomoon-users-3:before {
+	content: "\e602";
+}
+.icomoon-thumbs:before {
+	content: "\e603";
+}
+.icomoon-tablet:before {
+	content: "\e604";
+}
+.icomoon-star:before {
+	content: "\e605";
+}
+.icomoon-search:before {
+	content: "\e606";
+}
+.icomoon-pin:before {
+	content: "\e607";
+}
+.icomoon-lock:before {
+	content: "\e608";
+}
+.icomoon-info:before {
+	content: "\e609";
+}
+.icomoon-image:before {
+	content: "\e60a";
+}
+.icomoon-gear:before {
+	content: "\e60b";
+}
+.icomoon-dashboard:before {
+	content: "\e60c";
+}
+.icomoon-credit-card:before {
+	content: "\e60d";
+}
+.icomoon-chrono:before {
+	content: "\e60e";
+}
+.icomoon-chrono-1:before {
+	content: "\e60f";
+}
+.icomoon-chat:before {
+	content: "\e610";
+}
+.icomoon-calendar:before {
+	content: "\e611";
+}
+.icomoon-money:before {
+	content: "\f104";
+}
+.icomoon-phone:before {
+	content: "\f13a";
+}
+.icomoon-box:before {
+	content: "\f111";
+}
+.icomoon-timer:before {
+	content: "\f12f";
+}
+.icomoon-cloud:before {
+	content: "\f11e";
+}
+.icomoon-site:before {
+	content: "\f112";
+}
+.icomoon-user:before {
+	content: "\f1a3";
+}
+.icomoon-lock2:before {
+	content: "\f16d";
+}
+.icomoon-check:before {
+	content: "\f11a";
+}
+.icomoon-close:before {
+	content: "\f136";
+}

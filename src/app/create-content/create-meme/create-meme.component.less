@@ -1,0 +1,47 @@
+section {
+    position: relative;
+
+    .btn-group.actions {
+        position: absolute;
+        bottom: -46px;
+        right: 0;
+        z-index: 100;
+    }
+}
+
+.meme-content {
+
+    img {
+        margin-top: -4px;
+
+        &:hover {
+        }
+    }
+
+    header, footer {
+
+        position: relative;
+
+        textarea {
+            width: 100%;
+            background-color: white;
+            border: none;
+            text-align: center;
+            color: black;
+            font-size: 1.4em;
+            font-weight: 600;
+
+            transition: background 0.2s;
+
+            &:hover {
+                background-color: rgba(140, 141, 141, 0.15);
+                border: 2px dashed gray;
+            }
+
+            &:focus {
+                background-color: transparent;
+                color: white;
+            }
+        }
+    }
+}

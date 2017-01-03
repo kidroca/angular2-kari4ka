@@ -1,0 +1,44 @@
+<h2>Login</h2>
+
+<hr>
+
+<form class="form-horizontal well col-lg-6 col-lg-offset-3"
+      (ngSubmit)="onSubmit(loginForm)"
+      #loginForm="ngForm">
+
+    <fieldset class="col-md-offset-2 col-md-8">
+
+        <legend>Login</legend>
+
+        <!-- Username-->
+        <app-form-input labelText="Username"
+                        [displayMessages]="triedToSubmit"
+                        [ngModelController]="usernemaeControl">
+
+            <input type="text" class="form-control"
+                   #usernemaeControl="ngModel"
+                   placeholder="Your super-cool nickname"
+                   name="username"
+                   [(ngModel)]="username"
+                   minlength="3" maxlength="20" required>
+
+        </app-form-input>
+
+        <!-- Password-->
+        <app-form-input labelText="Password" [displayMessages]="triedToSubmit" [ngModelController]="passwordControl">
+
+            <input type="password" class="form-control"
+                   #passwordControl
+                   placeholder="ConsoleApplication1"
+                   name="password"
+                   [(ngModel)]="password"
+                   minlength="4" maxlength="64" required>
+
+        </app-form-input>
+
+        <div class="form-group control-label">
+            <button class="btn btn-primary pull-right" type="submit">Login</button>
+        </div>
+
+    </fieldset>
+</form>

@@ -1,0 +1,14 @@
+<div class="form-group"
+     [ngClass]="getGroupClass()">
+
+    <label class="control-label"
+           [ngClass]="getGroupClass('text-')">{{labelText}}
+
+        <ng-content id="input"></ng-content>
+    </label>
+
+    <span class="text-danger"
+          *ngIf="errorMessage">
+                {{errorMessage}}
+    </span>
+</div>

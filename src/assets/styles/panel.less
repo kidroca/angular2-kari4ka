@@ -1,0 +1,51 @@
+@import "variables";
+
+.panel, .card {
+    border-color: #e3e8ed;
+    border-radius: 2px;
+    background-color: #222;
+
+    .panel-heading, .panel-footer, .card-header {
+        padding: 0 15px;
+        border-color: transparent;
+        background: rgba(247, 248, 249, 0.5);
+    }
+
+    .panel-heading, .card-header, .panel-heading h2, .card-header h2 {
+
+        font-size: 13px;
+        line-height: 17px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: @grayish;
+    }
+
+    .panel-heading, .card-header {
+
+        &:before, &:after {
+            display: table;
+            content: " ";
+        }
+
+        &:after {
+            clear: both;
+        }
+
+        h2 {
+            float: left;
+            margin: 10px 0;
+            opacity: 1;
+        }
+
+        &.text-center {
+
+            h2 {
+                float: none;
+            }
+        }
+    }
+}
+
+.card .card-header {
+    padding: 0;
+}

@@ -1,0 +1,23 @@
+<section class="col-md-offset-1 col-md-10">
+
+    <h1>Gallery</h1>
+
+    <section class="panel animated fadeInUp">
+
+        <header class="panel-heading">
+            <h2>Images</h2>
+        </header>
+
+        <section class="panel-body">
+
+            <div class="col-sm-3 col-xs-4" *ngFor="let image of images">
+                <app-thumbnail [image]="image">
+                </app-thumbnail>
+            </div>
+
+            <div class="loading" *ngIf="images.length === 0">
+                <h2>Loading images...</h2>
+            </div>
+        </section>
+    </section>
+</section>

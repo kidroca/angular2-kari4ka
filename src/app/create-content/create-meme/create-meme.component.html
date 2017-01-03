@@ -1,0 +1,89 @@
+<section>
+    <h1>Create Meme</h1>
+
+    <section class="panels animated fadeInUp">
+        <ngb-accordion>
+
+            <ngb-panel id="images">
+
+                <template ngbPanelTitle>
+                    <header class="panel-heading">
+                        <h2>Select a template</h2>
+                    </header>
+                </template>
+
+                <template ngbPanelContent>
+                    <app-thumbnail (click)="onImageSelect(image)"
+                                   *ngFor="let image of images" [image]="image">
+                    </app-thumbnail>
+                </template>
+            </ngb-panel>
+
+            <ngb-panel id="edit">
+
+                <template ngbPanelTitle>
+                    <header class="panel-heading">
+                        <h2>Edit & Preview</h2>
+                    </header>
+                </template>
+
+                <template ngbPanelContent>
+
+                    <div class="meme-content">
+                        <header>
+                            <textarea placeholder="Header" [(ngModel)]="meme.title" rows="2">
+                            </textarea>
+                        </header>
+
+                        <img class="img-responsive" [src]="previewSource" alt="Selected Image"/>
+
+                        <footer>
+                            <textarea placeholder="Footer" [(ngModel)]="meme.footer" rows="2">
+                            </textarea>
+                        </footer>
+                    </div>
+                </template>
+
+            </ngb-panel>
+
+            <ngb-panel id="tools">
+
+                <template ngbPanelTitle>
+                    <header class="panel-heading">
+                        <h2>Toolbox</h2>
+                    </header>
+                </template>
+
+                <template ngbPanelContent>
+                    <form class="form-horizontal col-md-10 col-md-offset-1"
+                          #memeForm="ngForm"
+                          novalidate (ngSubmit)="onSubmit(memeForm)">
+
+                        <fieldset>
+
+                            <app-form-input labelText="Title"
+                                            [displayMessages]="triedToSubmit"
+                                            [ngModelController]="title">
+
+                                <input type="text"
+                                       class="form-control"
+                                       name="title"
+                                       #title="ngModel"
+                                       placeholder="Your creative title of at least 4 letters"
+                                       required
+                                       minlength="4"
+                                       [(ngModel)]="meme.title"/>
+                            </app-form-input>
+
+                        </fieldset>
+                    </form>
+                </template>
+
+            </ngb-panel>
+        </ngb-accordion>
+    </section>
+
+    <div class="actions btn-group">
+        <button class="btn btn-success pull-right" type="submit">Save</button>
+    </div>
+</section>

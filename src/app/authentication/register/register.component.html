@@ -1,0 +1,36 @@
+<h2>Register</h2>
+<p>Currently registration is invite only</p>
+
+<hr>
+
+<form class="form-horizontal well col-lg-6 col-lg-offset-3 clearfix"
+      (ngSubmit)="onSubmit(requestInvite)"
+      #requestInvite="ngForm" novalidate>
+
+    <fieldset class="col-md-offset-2 col-md-8">
+
+        <legend>Request an invite</legend>
+
+        <app-form-input [displayMessages]="triedToSubmit"
+                        [ngModelController]="emailControl"
+                        labelText="Email">
+
+            <div class="input-group">
+                <input class="form-control"
+                       id="email"
+                       #emailControl="ngModel"
+                       type="email"
+                       pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+                       placeholder="telerik@academy.com"
+                       name="email"
+                       [(ngModel)]="email"
+                       required>
+
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Request</button>
+                </span>
+            </div>
+        </app-form-input>
+
+    </fieldset>
+</form>

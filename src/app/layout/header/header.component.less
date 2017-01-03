@@ -1,0 +1,30 @@
+.navbar-header {
+    width: 25%;
+    min-width: 100px;
+    max-width: 250px;
+    text-align: center;
+
+    .navbar-brand {
+        width: 100%;
+    }
+}
+
+.navbar-nav {
+
+    li {
+        border-right: 1px solid #282828;
+
+        &:first-child {
+            border-left: 1px solid #282828;
+        }
+    }
+
+    a {
+        cursor: pointer;
+
+        &.active {
+            color: white;
+            border-bottom: 1px solid white;
+        }
+    }
+}
